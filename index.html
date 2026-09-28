@@ -46,6 +46,10 @@ body{max-width:480px;margin:0 auto;padding:16px 16px calc(16px + env(safe-area-i
 .day-btn.today{border-color:var(--accent)}
 .day-btn .check{font-size:10px;margin-left:2px}
 
+.mode-toggle{display:flex;gap:0;margin-bottom:14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.mode-btn{flex:1;padding:8px 0;text-align:center;font-size:12px;font-weight:700;color:var(--text-dim);background:none;border:none;cursor:pointer;font-family:inherit;transition:all .15s}
+.mode-btn.active{background:var(--accent);color:#0d0d0d}
+
 .session-tag{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.3px;margin-bottom:14px}
 .session-tag.workout{background:var(--accent-dim);color:var(--accent)}
 .session-tag.light{background:rgba(77,255,145,0.1);color:var(--green)}
@@ -137,27 +141,98 @@ const DAY_LABELS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const DAY_FULL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 const WORKOUTS = {
-  1:{type:'workout',title:'Chest + Triceps',run:true,exercises:[
-    {name:'Bench Press',sets:3,reps:'10 reps'},{name:'Pec Deck (Chest Fly)',sets:3,reps:'12 reps'},
-    {name:'Push-ups',sets:3,reps:'15 reps'},{name:'Diamond Push-ups',sets:3,reps:'10 reps'},
-    {name:'Chair Dips',sets:3,reps:'12 reps'}]},
-  2:{type:'workout',title:'Back + Biceps',run:true,exercises:[
-    {name:'Pull-ups (or negatives)',sets:3,reps:'max reps'},{name:'Lat Pulldown',sets:3,reps:'12 reps'},
-    {name:'Rows Machine',sets:3,reps:'12 reps'},{name:'Chin-grip Negative Pull-ups',sets:3,reps:'10 reps'}]},
-  3:{type:'light',title:'Rest Day',run:false,message:'Stretch, walk, recover. Muscles grow on rest days.'},
-  4:{type:'workout',title:'Shoulders + Core',run:true,exercises:[
-    {name:'Shoulder Press Machine',sets:3,reps:'12 reps'},{name:'Pike Push-ups',sets:3,reps:'10 reps'},
-    {name:'Plank',sets:3,reps:'45 sec'},{name:'Leg Raises',sets:3,reps:'12 reps'},
-    {name:'Dead Bugs',sets:3,reps:'10 each'}]},
-  5:{type:'workout',title:'Legs',run:true,exercises:[
-    {name:'Squats',sets:3,reps:'20 reps'},{name:'Bulgarian Split Squats',sets:3,reps:'10 each'},
-    {name:'Lunges',sets:3,reps:'12 each'},{name:'Calf Raises',sets:3,reps:'25 reps'},
-    {name:'Wall Sit',sets:3,reps:'30 sec'}]},
-  6:{type:'workout',title:'Full Body',run:true,exercises:[
-    {name:'Pull-ups',sets:3,reps:'max reps'},{name:'Bench Press',sets:3,reps:'10 reps'},
-    {name:'Rows Machine',sets:3,reps:'12 reps'},{name:'Squats',sets:3,reps:'15 reps'},
-    {name:'Plank',sets:3,reps:'30 sec'}]},
-  0:{type:'light',title:'Run Only',run:true,message:'No workout — just your 3km run. Eat big after.'}
+  1: {
+    type:'workout', title:'Chest + Triceps', run:true,
+    gym:[
+      {name:'Bench Press',sets:3,reps:'10 reps'},
+      {name:'Pec Deck (Chest Fly)',sets:3,reps:'12 reps'},
+      {name:'Push-ups',sets:3,reps:'15 reps'},
+      {name:'Diamond Push-ups',sets:3,reps:'10 reps'},
+      {name:'Chair Dips',sets:3,reps:'12 reps'}
+    ],
+    home:[
+      {name:'Push-ups (slow: 3s down)',sets:4,reps:'15 reps'},
+      {name:'Diamond Push-ups',sets:4,reps:'12 reps'},
+      {name:'Decline Push-ups (feet on chair)',sets:3,reps:'12 reps'},
+      {name:'Archer Push-ups',sets:3,reps:'6 each'},
+      {name:'Chair Dips',sets:3,reps:'15 reps'},
+      {name:'Tricep Push-ups (elbows tight)',sets:3,reps:'10 reps'}
+    ]
+  },
+  2: {
+    type:'workout', title:'Back + Biceps', run:true,
+    gym:[
+      {name:'Pull-ups (or negatives)',sets:3,reps:'max reps'},
+      {name:'Lat Pulldown',sets:3,reps:'12 reps'},
+      {name:'Rows Machine',sets:3,reps:'12 reps'},
+      {name:'Chin-grip Negative Pull-ups',sets:3,reps:'10 reps'}
+    ],
+    home:[
+      {name:'Towel Door Rows',sets:4,reps:'12 reps'},
+      {name:'Superman Holds',sets:4,reps:'20 sec'},
+      {name:'Reverse Snow Angels',sets:3,reps:'12 reps'},
+      {name:'Towel Bicep Curls (stand on towel)',sets:3,reps:'12 each'},
+      {name:'Prone Y Raises',sets:3,reps:'12 reps'},
+      {name:'Isometric Towel Pull (5 angles)',sets:3,reps:'10 sec each'}
+    ]
+  },
+  3: {type:'light', title:'Rest Day', run:false, message:'Stretch, walk, recover. Muscles grow on rest days.'},
+  4: {
+    type:'workout', title:'Shoulders + Core', run:true,
+    gym:[
+      {name:'Shoulder Press Machine',sets:3,reps:'12 reps'},
+      {name:'Pike Push-ups',sets:3,reps:'10 reps'},
+      {name:'Plank',sets:3,reps:'45 sec'},
+      {name:'Leg Raises',sets:3,reps:'12 reps'},
+      {name:'Dead Bugs',sets:3,reps:'10 each'}
+    ],
+    home:[
+      {name:'Pike Push-ups',sets:4,reps:'12 reps'},
+      {name:'Elevated Pike Push-ups (feet on chair)',sets:3,reps:'8 reps'},
+      {name:'Lateral Raises (water bottles)',sets:3,reps:'15 each'},
+      {name:'Plank',sets:3,reps:'60 sec'},
+      {name:'Leg Raises',sets:3,reps:'15 reps'},
+      {name:'Dead Bugs',sets:3,reps:'12 each'},
+      {name:'Mountain Climbers',sets:3,reps:'20 reps'}
+    ]
+  },
+  5: {
+    type:'workout', title:'Legs', run:true,
+    gym:[
+      {name:'Squats',sets:3,reps:'20 reps'},
+      {name:'Bulgarian Split Squats',sets:3,reps:'10 each'},
+      {name:'Lunges',sets:3,reps:'12 each'},
+      {name:'Calf Raises',sets:3,reps:'25 reps'},
+      {name:'Wall Sit',sets:3,reps:'30 sec'}
+    ],
+    home:[
+      {name:'Jump Squats',sets:4,reps:'15 reps'},
+      {name:'Bulgarian Split Squats (slow)',sets:3,reps:'12 each'},
+      {name:'Walking Lunges',sets:3,reps:'14 each'},
+      {name:'Single Leg Calf Raises',sets:3,reps:'20 each'},
+      {name:'Wall Sit',sets:3,reps:'45 sec'},
+      {name:'Pistol Squat Negatives',sets:3,reps:'5 each'}
+    ]
+  },
+  6: {
+    type:'workout', title:'Full Body', run:true,
+    gym:[
+      {name:'Pull-ups',sets:3,reps:'max reps'},
+      {name:'Bench Press',sets:3,reps:'10 reps'},
+      {name:'Rows Machine',sets:3,reps:'12 reps'},
+      {name:'Squats',sets:3,reps:'15 reps'},
+      {name:'Plank',sets:3,reps:'30 sec'}
+    ],
+    home:[
+      {name:'Decline Push-ups',sets:3,reps:'15 reps'},
+      {name:'Towel Door Rows',sets:3,reps:'12 reps'},
+      {name:'Pike Push-ups',sets:3,reps:'10 reps'},
+      {name:'Jump Squats',sets:3,reps:'15 reps'},
+      {name:'Burpees',sets:3,reps:'10 reps'},
+      {name:'Plank',sets:3,reps:'45 sec'}
+    ]
+  },
+  0: {type:'light', title:'Run Only', run:true, message:'No workout — just your 3km run. Eat big after.'}
 };
 
 let selectedDay = new Date().getDay();
@@ -192,22 +267,23 @@ function getCurrentDK() {
   return localDate(d);
 }
 
+function getExercises(w, mode) {
+  if (w.type === 'light') return [];
+  return mode === 'home' ? w.home : w.gym;
+}
+
 function getDayCompletion(dk, dayNum) {
   const state = loadDay(dk);
   const w = WORKOUTS[dayNum];
   if (!w) return 0;
 
-  // Pure rest day (Wed) — always counts as complete for streaks
   if (w.type === 'light' && !w.run) return 1;
+  if (w.type === 'light' && w.run) return state.run ? 1 : 0;
 
-  // Run-only day (Sun)
-  if (w.type === 'light' && w.run) {
-    return state.run ? 1 : 0;
-  }
-
-  // Workout days
+  const mode = state.mode || 'gym';
+  const exercises = getExercises(w, mode);
   let total = 0, done = 0;
-  w.exercises.forEach((ex, i) => {
+  exercises.forEach((ex, i) => {
     total += ex.sets;
     for (let s = 0; s < ex.sets; s++) if (state['e'+i+'_s'+s]) done++;
   });
@@ -277,8 +353,11 @@ function renderContent() {
     return;
   }
 
+  const mode = state.mode || 'gym';
+  const exercises = getExercises(w, mode);
+
   let totalSets = 0, doneSets = 0;
-  w.exercises.forEach((ex, i) => {
+  exercises.forEach((ex, i) => {
     totalSets += ex.sets;
     for (let s = 0; s < ex.sets; s++) if (state['e'+i+'_s'+s]) doneSets++;
   });
@@ -287,7 +366,13 @@ function renderContent() {
 
   let h = `<span class="session-tag workout">${w.title.toUpperCase()}</span>`;
 
-  w.exercises.forEach((ex, i) => {
+  // Gym / Home toggle
+  h += `<div class="mode-toggle">
+    <button class="mode-btn ${mode==='gym'?'active':''}" onclick="setMode('gym')">🏋️ Gym</button>
+    <button class="mode-btn ${mode==='home'?'active':''}" onclick="setMode('home')">🏠 Home</button>
+  </div>`;
+
+  exercises.forEach((ex, i) => {
     let sets = '';
     for (let s = 0; s < ex.sets; s++) {
       const d = state['e'+i+'_s'+s] ? 'done' : '';
@@ -322,7 +407,18 @@ function toggleRun() {
 
 function updateKm(v) {
   const dk = getCurrentDK(), s = loadDay(dk);
-  s.km = Math.max(0, parseFloat(v) || 0);
+  s.km = Math.max(0, Math.min(999, parseFloat(v) || 0));
+  saveDay(dk, s); renderNav(); renderContent();
+}
+
+function setMode(mode) {
+  const dk = getCurrentDK(), s = loadDay(dk);
+  // Clear exercise progress when switching modes (different exercise count)
+  const oldMode = s.mode || 'gym';
+  if (oldMode !== mode) {
+    Object.keys(s).forEach(k => { if (k.startsWith('e')) delete s[k]; });
+  }
+  s.mode = mode;
   saveDay(dk, s); renderNav(); renderContent();
 }
 
@@ -336,7 +432,6 @@ function renderHistory() {
   const hv = document.getElementById('historyView');
   const today = new Date();
 
-  // Current streak (yesterday backwards, then check today)
   let streak = 0;
   const d = new Date(today);
   d.setDate(d.getDate() - 1);
@@ -347,7 +442,6 @@ function renderHistory() {
   }
   if (getDayCompletion(dateKey(), today.getDay()) >= 0.5) streak++;
 
-  // Total active days (90 day scan — excludes pure rest days)
   let totalDone = 0;
   const scan = new Date(today);
   for (let i = 0; i < 90; i++) {
@@ -357,7 +451,6 @@ function renderHistory() {
     scan.setDate(scan.getDate() - 1);
   }
 
-  // Best streak (90 day scan)
   let bestStreak = 0, temp = 0;
   const bs = new Date(today);
   for (let i = 0; i < 90; i++) {
@@ -369,18 +462,16 @@ function renderHistory() {
 
   let h = '';
 
-  // Streak cards
   h += `<div class="streak-row">
     <div class="streak-card"><div class="streak-num">${streak}</div><div class="streak-label">Current Streak</div></div>
     <div class="streak-card"><div class="streak-num">${bestStreak}</div><div class="streak-label">Best Streak</div></div>
     <div class="streak-card"><div class="streak-num">${totalDone}</div><div class="streak-label">Total Days</div></div>
   </div>`;
 
-  // Weekly grids (last 4 weeks)
   h += `<div class="history-title">Weekly Overview</div>`;
   for (let wk = 0; wk < 4; wk++) {
     const ref = new Date(today);
-    ref.setDate(ref.getDate() - ref.getDay() - wk * 7); // Sunday of that week
+    ref.setDate(ref.getDate() - ref.getDay() - wk * 7);
     const weekEnd = new Date(ref); weekEnd.setDate(ref.getDate() + 6);
     const label = wk === 0 ? 'This week' : wk === 1 ? 'Last week'
       : ref.getDate() + ' ' + ref.toLocaleString('en',{month:'short'}) + ' – ' + weekEnd.getDate() + ' ' + weekEnd.toLocaleString('en',{month:'short'});
@@ -405,7 +496,6 @@ function renderHistory() {
     h += `</div></div>`;
   }
 
-  // Km history this week
   h += `<div class="history-title">Kilometers This Week</div><div class="km-history">`;
   const stRef = new Date(today); stRef.setDate(stRef.getDate() - stRef.getDay());
   let hasKm = false, totalKm = 0;
