@@ -7,17 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0d0d0d;
-  --surface: #161616;
-  --surface2: #1e1e1e;
-  --border: #2a2a2a;
-  --text: #e8e8e8;
-  --text-dim: #666;
-  --accent: #c4f745;
-  --accent-dim: rgba(196,247,69,0.12);
-  --green: #4dff91;
-  --red: #ff4d4d;
-  --orange: #ffa94d;
+  --bg: #0d0d0d; --surface: #161616; --surface2: #1e1e1e; --border: #2a2a2a;
+  --text: #e8e8e8; --text-dim: #666; --accent: #c4f745;
+  --accent-dim: rgba(196,247,69,0.12); --green: #4dff91; --red: #ff4d4d;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -26,7 +18,7 @@
   :root:not([data-theme="dark"]) {
     --bg: #f5f5f0; --surface: #fff; --surface2: #ececec; --border: #ddd;
     --text: #111; --text-dim: #888; --accent: #3a7d0a;
-    --accent-dim: rgba(58,125,10,0.1); --green: #2d8a4e; --orange: #c77b1a;
+    --accent-dim: rgba(58,125,10,0.1); --green: #2d8a4e;
   }
 }
 :root[data-theme="dark"] {
@@ -43,12 +35,10 @@ body{max-width:480px;margin:0 auto;padding:16px 16px calc(16px + env(safe-area-i
 .header h1{font-size:22px;font-weight:900;letter-spacing:-0.5px}
 .header .date{font-size:12px;color:var(--text-dim);font-weight:500}
 
-/* Top tabs */
 .top-tabs{display:flex;gap:0;margin-bottom:18px;border-bottom:1.5px solid var(--border)}
 .top-tab{flex:1;padding:10px 0;text-align:center;font-size:13px;font-weight:700;color:var(--text-dim);background:none;border:none;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent;margin-bottom:-1.5px;transition:all .15s}
 .top-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 
-/* Day nav */
 .day-nav{display:flex;gap:6px;margin-bottom:18px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .day-nav::-webkit-scrollbar{display:none}
 .day-btn{flex-shrink:0;padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text-dim);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
@@ -59,9 +49,6 @@ body{max-width:480px;margin:0 auto;padding:16px 16px calc(16px + env(safe-area-i
 .session-tag{display:inline-block;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.3px;margin-bottom:14px}
 .session-tag.workout{background:var(--accent-dim);color:var(--accent)}
 .session-tag.light{background:rgba(77,255,145,0.1);color:var(--green)}
-
-.schedule-bar{display:flex;gap:6px;margin-bottom:16px;font-size:11px;color:var(--text-dim);flex-wrap:wrap}
-.schedule-bar span{background:var(--surface);padding:5px 9px;border-radius:6px;border:1px solid var(--border)}
 
 .exercise-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden}
 .exercise-header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px}
@@ -82,7 +69,7 @@ body{max-width:480px;margin:0 auto;padding:16px 16px calc(16px + env(safe-area-i
 .toggle-btn::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:12px;background:var(--text);transition:transform .2s}
 .toggle-btn.done::after{transform:translateX(22px);background:#0d0d0d}
 
-.steps-input{width:70px;padding:6px 8px;border-radius:6px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-family:inherit;font-size:14px;font-weight:700;text-align:right}
+.km-input{width:70px;padding:6px 8px;border-radius:6px;border:1.5px solid var(--border);background:var(--surface2);color:var(--text);font-family:inherit;font-size:14px;font-weight:700;text-align:right}
 
 .bar-bg{height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
 .bar-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
@@ -96,16 +83,11 @@ body{max-width:480px;margin:0 auto;padding:16px 16px calc(16px + env(safe-area-i
 .light-day-msg h2{font-size:17px;font-weight:700;margin-bottom:6px}
 .light-day-msg p{font-size:13px;color:var(--text-dim);line-height:1.5}
 
-.circuit-note{font-size:11px;color:var(--accent);background:var(--accent-dim);padding:7px 11px;border-radius:8px;margin-bottom:10px;font-weight:500}
-
 .btn-row{display:flex;gap:8px;margin-top:14px}
 .action-btn{flex:1;padding:11px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text-dim);font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s}
 .action-btn.danger{color:var(--red);border-color:rgba(255,77,77,0.2)}
 
-/* History */
-.history-section{margin-bottom:20px}
 .history-title{font-size:15px;font-weight:700;margin-bottom:12px}
-
 .streak-row{display:flex;gap:10px;margin-bottom:18px}
 .streak-card{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
 .streak-num{font-size:28px;font-weight:900;color:var(--accent);line-height:1}
@@ -121,12 +103,12 @@ body{max-width:480px;margin:0 auto;padding:16px 16px calc(16px + env(safe-area-i
 .week-dot.partial{background:var(--accent-dim);border-color:var(--accent)}
 .week-dot.rest{background:rgba(77,255,145,0.1);border-color:rgba(77,255,145,0.2)}
 
-.steps-history{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
-.steps-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px}
-.steps-row+.steps-row{border-top:1px solid var(--border)}
-.steps-day{font-weight:600;font-size:12px}
-.steps-val{color:var(--accent);font-weight:700;font-size:12px}
-.steps-val.low{color:var(--text-dim)}
+.km-history{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
+.km-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13px}
+.km-row+.km-row{border-top:1px solid var(--border)}
+.km-day{font-weight:600;font-size:12px}
+.km-val{color:var(--accent);font-weight:700;font-size:12px}
+.km-val.low{color:var(--text-dim)}
 
 .empty-state{text-align:center;padding:40px;color:var(--text-dim);font-size:13px}
 </style>
@@ -155,42 +137,45 @@ const DAY_LABELS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const DAY_FULL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 const WORKOUTS = {
-  1:{type:'workout',title:'Upper Push',run:true,exercises:[
+  1:{type:'workout',title:'Chest + Triceps',run:true,exercises:[
+    {name:'Bench Press',sets:3,reps:'10 reps'},{name:'Pec Deck (Chest Fly)',sets:3,reps:'12 reps'},
     {name:'Push-ups',sets:3,reps:'15 reps'},{name:'Diamond Push-ups',sets:3,reps:'10 reps'},
-    {name:'Pike Push-ups',sets:3,reps:'10 reps'},{name:'Chair Dips',sets:3,reps:'12 reps'}]},
-  2:{type:'workout',title:'Legs',run:true,exercises:[
-    {name:'Squats',sets:3,reps:'20 reps'},{name:'Bulgarian Split Squats',sets:3,reps:'10 each'},
-    {name:'Lunges',sets:3,reps:'12 each'},{name:'Calf Raises',sets:3,reps:'25 reps'}]},
-  3:{type:'light',title:'Light Day',run:false,message:'Stretch, walk, recover. Muscles grow on rest days.'},
-  4:{type:'workout',title:'Pull + Core',run:true,exercises:[
-    {name:'Towel Door Rows',sets:3,reps:'12 reps'},{name:'Superman Holds',sets:3,reps:'20 sec'},
-    {name:'Plank',sets:3,reps:'30 sec'},{name:'Leg Raises',sets:3,reps:'12 reps'},
+    {name:'Chair Dips',sets:3,reps:'12 reps'}]},
+  2:{type:'workout',title:'Back + Biceps',run:true,exercises:[
+    {name:'Pull-ups (or negatives)',sets:3,reps:'max reps'},{name:'Lat Pulldown',sets:3,reps:'12 reps'},
+    {name:'Rows Machine',sets:3,reps:'12 reps'},{name:'Chin-grip Negative Pull-ups',sets:3,reps:'10 reps'}]},
+  3:{type:'light',title:'Rest Day',run:false,message:'Stretch, walk, recover. Muscles grow on rest days.'},
+  4:{type:'workout',title:'Shoulders + Core',run:true,exercises:[
+    {name:'Shoulder Press Machine',sets:3,reps:'12 reps'},{name:'Pike Push-ups',sets:3,reps:'10 reps'},
+    {name:'Plank',sets:3,reps:'45 sec'},{name:'Leg Raises',sets:3,reps:'12 reps'},
     {name:'Dead Bugs',sets:3,reps:'10 each'}]},
-  5:{type:'workout',title:'Full Body Circuit',run:true,isCircuit:true,exercises:[
-    {name:'Push-ups',sets:4,reps:'15 reps'},{name:'Squats',sets:4,reps:'20 reps'},
-    {name:'Plank',sets:4,reps:'30 sec'},{name:'Lunges',sets:4,reps:'12 each'}]},
-  6:{type:'workout',title:'Legs + Core',run:true,exercises:[
-    {name:'Wall Sit',sets:3,reps:'30 sec'},{name:'Jump Squats',sets:3,reps:'12 reps'},
-    {name:'Mountain Climbers',sets:3,reps:'20 reps'},{name:'Bicycle Crunches',sets:3,reps:'15 each'},
-    {name:'Calf Raises',sets:3,reps:'25 reps'}]},
+  5:{type:'workout',title:'Legs',run:true,exercises:[
+    {name:'Squats',sets:3,reps:'20 reps'},{name:'Bulgarian Split Squats',sets:3,reps:'10 each'},
+    {name:'Lunges',sets:3,reps:'12 each'},{name:'Calf Raises',sets:3,reps:'25 reps'},
+    {name:'Wall Sit',sets:3,reps:'30 sec'}]},
+  6:{type:'workout',title:'Full Body',run:true,exercises:[
+    {name:'Pull-ups',sets:3,reps:'max reps'},{name:'Bench Press',sets:3,reps:'10 reps'},
+    {name:'Rows Machine',sets:3,reps:'12 reps'},{name:'Squats',sets:3,reps:'15 reps'},
+    {name:'Plank',sets:3,reps:'30 sec'}]},
   0:{type:'light',title:'Run Only',run:true,message:'No workout — just your 3km run. Eat big after.'}
 };
 
 let selectedDay = new Date().getDay();
-let currentTab = 'today';
 
 // --- Storage ---
-function dateKey(date) {
-  const d = date || new Date();
-  return d.toISOString().slice(0,10);
+function localDate(d) {
+  d = d || new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 }
 
-function dayKey(dayNum, weekOffset) {
+function dateKey(date) {
+  return localDate(date || new Date());
+}
+
+function dayKey(dayNum) {
   const d = new Date();
-  if (weekOffset) d.setDate(d.getDate() + weekOffset * 7);
-  const diff = dayNum - d.getDay();
-  d.setDate(d.getDate() + diff);
-  return d.toISOString().slice(0,10);
+  d.setDate(d.getDate() + (dayNum - d.getDay()));
+  return localDate(d);
 }
 
 function loadDay(dk) {
@@ -203,37 +188,35 @@ function saveDay(dk, state) {
 
 function getCurrentDK() {
   const d = new Date();
-  const diff = selectedDay - d.getDay();
-  const target = new Date(d);
-  target.setDate(d.getDate() + diff);
-  return target.toISOString().slice(0,10);
+  d.setDate(d.getDate() + (selectedDay - d.getDay()));
+  return localDate(d);
 }
 
 function getDayCompletion(dk, dayNum) {
   const state = loadDay(dk);
   const w = WORKOUTS[dayNum];
   if (!w) return 0;
-  if (w.type === 'light') {
-    let total = 1; // steps count
-    let done = 0;
-    if (w.run) { total++; if (state.run) done++; }
-    if ((state.steps||0) >= 10000) done++;
-    return done / total;
+
+  // Pure rest day (Wed) — always counts as complete for streaks
+  if (w.type === 'light' && !w.run) return 1;
+
+  // Run-only day (Sun)
+  if (w.type === 'light' && w.run) {
+    return state.run ? 1 : 0;
   }
+
+  // Workout days
   let total = 0, done = 0;
-  w.exercises.forEach((ex,i) => {
+  w.exercises.forEach((ex, i) => {
     total += ex.sets;
     for (let s = 0; s < ex.sets; s++) if (state['e'+i+'_s'+s]) done++;
   });
   if (w.run) { total++; if (state.run) done++; }
-  total++; // steps
-  if ((state.steps||0) >= 10000) done++;
   return total > 0 ? done / total : 0;
 }
 
 // --- Tab switch ---
 function switchTab(tab) {
-  currentTab = tab;
   document.getElementById('tabToday').classList.toggle('active', tab === 'today');
   document.getElementById('tabHistory').classList.toggle('active', tab === 'history');
   document.getElementById('todayView').style.display = tab === 'today' ? '' : 'none';
@@ -249,7 +232,7 @@ function renderNav() {
     const cls = ['day-btn'];
     if (i === selectedDay) cls.push('active');
     else if (i === today) cls.push('today');
-    const dk = dayKey(i, 0);
+    const dk = dayKey(i);
     const comp = getDayCompletion(dk, i);
     const check = comp >= 1 ? ' <span class="check">✓</span>' : '';
     return `<button class="${cls.join(' ')}" onclick="selectDay(${i})">${label}${check}</button>`;
@@ -257,6 +240,17 @@ function renderNav() {
 }
 
 function selectDay(d) { selectedDay = d; renderNav(); renderContent(); }
+
+// --- Km tracker ---
+function renderKm(state) {
+  const km = state.km || 0;
+  const pct = Math.min(100, Math.round(km / 5 * 100));
+  return `<div class="tracker-card" style="margin-top:8px">
+    <div class="left"><span class="tracker-icon">👟</span><div><div class="tracker-label">5km Goal</div>
+    <div class="tracker-sub">${km > 0 ? km + ' / 5 km' : 'Tap to log'}</div></div></div>
+    <input type="number" inputmode="decimal" step="0.1" value="${km || ''}" placeholder="0" class="km-input" onchange="updateKm(this.value)"/>
+  </div><div class="bar-bg" style="margin:6px 0 0"><div class="bar-fill" style="width:${pct}%"></div></div>`;
+}
 
 // --- Workout view ---
 function renderContent() {
@@ -277,97 +271,100 @@ function renderContent() {
         <div class="left"><span class="tracker-icon">🏃</span><div><div class="tracker-label">3km Run</div><div class="tracker-sub">Today's session</div></div></div>
         <button class="toggle-btn ${rd}" onclick="toggleRun()"></button></div>`;
     }
-    h += renderSteps(state, dk);
+    h += renderKm(state);
     h += `<div class="btn-row"><button class="action-btn danger" onclick="resetDay()">Reset day</button></div>`;
     container.innerHTML = h;
     return;
   }
 
-  let totalSets=0, doneSets=0;
-  w.exercises.forEach((ex,i)=>{totalSets+=ex.sets;for(let s=0;s<ex.sets;s++)if(state['e'+i+'_s'+s])doneSets++});
-  if(w.run){totalSets++;if(state.run)doneSets++}
-  const pct = totalSets>0 ? Math.round(doneSets/totalSets*100) : 0;
+  let totalSets = 0, doneSets = 0;
+  w.exercises.forEach((ex, i) => {
+    totalSets += ex.sets;
+    for (let s = 0; s < ex.sets; s++) if (state['e'+i+'_s'+s]) doneSets++;
+  });
+  if (w.run) { totalSets++; if (state.run) doneSets++; }
+  const pct = totalSets > 0 ? Math.round(doneSets / totalSets * 100) : 0;
 
   let h = `<span class="session-tag workout">${w.title.toUpperCase()}</span>`;
-  h += `<div class="schedule-bar"><span>5:00 Wake</span><span>5:10 Train</span>${w.run?'<span>5:35 Run</span>':''}<span>6:00 Eat</span></div>`;
-  if (w.isCircuit) h += `<div class="circuit-note">Circuit: all 4 back-to-back, 60s rest, ×${w.exercises[0].sets} rounds</div>`;
 
-  w.exercises.forEach((ex,i)=>{
-    let sets='';
-    for(let s=0;s<ex.sets;s++){
-      const d=state['e'+i+'_s'+s]?'done':'';
-      sets+=`<button class="set-btn ${d}" onclick="toggleSet(${i},${s})">${s+1}</button>`;
+  w.exercises.forEach((ex, i) => {
+    let sets = '';
+    for (let s = 0; s < ex.sets; s++) {
+      const d = state['e'+i+'_s'+s] ? 'done' : '';
+      sets += `<button class="set-btn ${d}" onclick="toggleSet(${i},${s})">${s+1}</button>`;
     }
-    h+=`<div class="exercise-card"><div class="exercise-header"><span class="exercise-name">${ex.name}</span><span class="exercise-meta">${ex.sets}×${ex.reps}</span></div><div class="sets-container">${sets}</div></div>`;
+    h += `<div class="exercise-card"><div class="exercise-header"><span class="exercise-name">${ex.name}</span><span class="exercise-meta">${ex.sets}×${ex.reps}</span></div><div class="sets-container">${sets}</div></div>`;
   });
 
-  if(w.run){
-    const rd=state.run?'done':'';
-    h+=`<div class="tracker-card"><div class="left"><span class="tracker-icon">🏃</span><div><div class="tracker-label">3km Run</div><div class="tracker-sub">After workout</div></div></div><button class="toggle-btn ${rd}" onclick="toggleRun()"></button></div>`;
+  if (w.run) {
+    const rd = state.run ? 'done' : '';
+    h += `<div class="tracker-card"><div class="left"><span class="tracker-icon">🏃</span><div><div class="tracker-label">3km Run</div><div class="tracker-sub">After workout</div></div></div><button class="toggle-btn ${rd}" onclick="toggleRun()"></button></div>`;
   }
 
-  h += renderSteps(state, dk);
+  h += renderKm(state);
   h += `<div class="progress-box"><div class="progress-row"><span>Workout</span><span class="pct">${pct}%</span></div><div class="bar-bg"><div class="bar-fill" style="width:${pct}%"></div></div></div>`;
   h += `<div class="btn-row"><button class="action-btn danger" onclick="resetDay()">Reset day</button></div>`;
   container.innerHTML = h;
 }
 
-function renderSteps(state) {
-  const sv = state.steps||0;
-  const sp = Math.min(100,Math.round(sv/10000*100));
-  return `<div class="tracker-card" style="margin-top:8px">
-    <div class="left"><span class="tracker-icon">👟</span><div><div class="tracker-label">10K Steps</div>
-    <div class="tracker-sub">${sv>0?sv.toLocaleString()+' / 10,000':'Tap to log'}</div></div></div>
-    <input type="number" inputmode="numeric" value="${sv||''}" placeholder="0" class="steps-input" onchange="updateSteps(this.value)"/>
-  </div><div class="bar-bg" style="margin:6px 0 0"><div class="bar-fill" style="width:${sp}%"></div></div>`;
+// --- Actions ---
+function toggleSet(ei, si) {
+  const dk = getCurrentDK(), s = loadDay(dk);
+  s['e'+ei+'_s'+si] = !s['e'+ei+'_s'+si];
+  saveDay(dk, s); renderNav(); renderContent();
 }
 
-// --- Actions ---
-function toggleSet(ei,si){const dk=getCurrentDK();const s=loadDay(dk);const k='e'+ei+'_s'+si;s[k]=!s[k];saveDay(dk,s);renderNav();renderContent()}
-function toggleRun(){const dk=getCurrentDK();const s=loadDay(dk);s.run=!s.run;saveDay(dk,s);renderNav();renderContent()}
-function updateSteps(v){const dk=getCurrentDK();const s=loadDay(dk);s.steps=Math.max(0,parseInt(v)||0);saveDay(dk,s);renderNav();renderContent()}
-function resetDay(){const dk=getCurrentDK();saveDay(dk,{});renderNav();renderContent()}
+function toggleRun() {
+  const dk = getCurrentDK(), s = loadDay(dk);
+  s.run = !s.run;
+  saveDay(dk, s); renderNav(); renderContent();
+}
+
+function updateKm(v) {
+  const dk = getCurrentDK(), s = loadDay(dk);
+  s.km = Math.max(0, parseFloat(v) || 0);
+  saveDay(dk, s); renderNav(); renderContent();
+}
+
+function resetDay() {
+  saveDay(getCurrentDK(), {});
+  renderNav(); renderContent();
+}
 
 // --- History ---
 function renderHistory() {
   const hv = document.getElementById('historyView');
+  const today = new Date();
 
-  // Calculate streak
+  // Current streak (yesterday backwards, then check today)
   let streak = 0;
-  const d = new Date();
-  d.setDate(d.getDate() - 1); // start from yesterday
-  while(true) {
-    const dk = d.toISOString().slice(0,10);
-    const dayNum = d.getDay();
-    const comp = getDayCompletion(dk, dayNum);
-    if (comp >= 0.5) { streak++; d.setDate(d.getDate()-1); }
+  const d = new Date(today);
+  d.setDate(d.getDate() - 1);
+  while (streak < 365) {
+    const dk = localDate(d);
+    if (getDayCompletion(dk, d.getDay()) >= 0.5) { streak++; d.setDate(d.getDate()-1); }
     else break;
-    if (streak > 365) break;
   }
-  // Check today too
-  const todayDK = dateKey();
-  const todayComp = getDayCompletion(todayDK, new Date().getDay());
-  if (todayComp >= 0.5) streak++;
+  if (getDayCompletion(dateKey(), today.getDay()) >= 0.5) streak++;
 
-  // Total workouts
+  // Total active days (90 day scan — excludes pure rest days)
   let totalDone = 0;
-  const scan = new Date();
+  const scan = new Date(today);
   for (let i = 0; i < 90; i++) {
-    const dk = scan.toISOString().slice(0,10);
-    const comp = getDayCompletion(dk, scan.getDay());
-    if (comp >= 0.5) totalDone++;
-    scan.setDate(scan.getDate()-1);
+    const w = WORKOUTS[scan.getDay()];
+    const isRest = w.type === 'light' && !w.run;
+    if (!isRest && getDayCompletion(localDate(scan), scan.getDay()) >= 0.5) totalDone++;
+    scan.setDate(scan.getDate() - 1);
   }
 
-  // Best streak
-  let bestStreak = 0, tempStreak = 0;
-  const bs = new Date();
+  // Best streak (90 day scan)
+  let bestStreak = 0, temp = 0;
+  const bs = new Date(today);
   for (let i = 0; i < 90; i++) {
-    const dk = bs.toISOString().slice(0,10);
-    const comp = getDayCompletion(dk, bs.getDay());
-    if (comp >= 0.5) { tempStreak++; bestStreak = Math.max(bestStreak, tempStreak); }
-    else tempStreak = 0;
-    bs.setDate(bs.getDate()-1);
+    if (getDayCompletion(localDate(bs), bs.getDay()) >= 0.5) {
+      temp++; bestStreak = Math.max(bestStreak, temp);
+    } else temp = 0;
+    bs.setDate(bs.getDate() - 1);
   }
 
   let h = '';
@@ -382,56 +379,49 @@ function renderHistory() {
   // Weekly grids (last 4 weeks)
   h += `<div class="history-title">Weekly Overview</div>`;
   for (let wk = 0; wk < 4; wk++) {
-    const weekDays = [];
-    const ref = new Date();
+    const ref = new Date(today);
     ref.setDate(ref.getDate() - ref.getDay() - wk * 7); // Sunday of that week
-    for (let i = 0; i < 7; i++) {
-      const wd = new Date(ref);
-      wd.setDate(ref.getDate() + i);
-      const dk = wd.toISOString().slice(0,10);
-      const dayNum = wd.getDay();
-      const comp = getDayCompletion(dk, dayNum);
-      const isFuture = wd > new Date();
-      weekDays.push({ label: DAY_LABELS[dayNum], comp, isFuture, isLight: WORKOUTS[dayNum].type==='light' && !WORKOUTS[dayNum].run });
-    }
-    const weekStart = new Date(ref);
-    const weekEnd = new Date(ref); weekEnd.setDate(ref.getDate()+6);
-    const label = wk === 0 ? 'This week' : wk === 1 ? 'Last week' : `${weekStart.getDate()} ${weekStart.toLocaleString('en',{month:'short'})} – ${weekEnd.getDate()} ${weekEnd.toLocaleString('en',{month:'short'})}`;
+    const weekEnd = new Date(ref); weekEnd.setDate(ref.getDate() + 6);
+    const label = wk === 0 ? 'This week' : wk === 1 ? 'Last week'
+      : ref.getDate() + ' ' + ref.toLocaleString('en',{month:'short'}) + ' – ' + weekEnd.getDate() + ' ' + weekEnd.toLocaleString('en',{month:'short'});
 
     h += `<div class="week-block"><div class="week-label">${label}</div><div class="week-grid">`;
-    weekDays.forEach(wd => {
-      let cls = 'week-dot';
-      let inner = '';
-      if (wd.isFuture) { cls += ''; inner = ''; }
-      else if (wd.comp >= 1) { cls += ' full'; inner = '✓'; }
-      else if (wd.comp >= 0.5) { cls += ' partial'; inner = '½'; }
-      else if (wd.isLight) { cls += ' rest'; inner = '–'; }
-      h += `<div class="week-cell"><div class="week-cell-label">${wd.label}</div><div class="${cls}">${inner}</div></div>`;
-    });
+    for (let i = 0; i < 7; i++) {
+      const wd = new Date(ref); wd.setDate(ref.getDate() + i);
+      const dk = localDate(wd);
+      const dayNum = wd.getDay();
+      const comp = getDayCompletion(dk, dayNum);
+      const isFuture = wd > today;
+      const isRest = WORKOUTS[dayNum].type === 'light' && !WORKOUTS[dayNum].run;
+
+      let cls = 'week-dot', inner = '';
+      if (isFuture) { /* empty */ }
+      else if (comp >= 1) { cls += ' full'; inner = '✓'; }
+      else if (comp >= 0.5) { cls += ' partial'; inner = '½'; }
+      else if (isRest) { cls += ' rest'; inner = '–'; }
+
+      h += `<div class="week-cell"><div class="week-cell-label">${DAY_LABELS[dayNum]}</div><div class="${cls}">${inner}</div></div>`;
+    }
     h += `</div></div>`;
   }
 
-  // Steps history this week
-  h += `<div class="history-title">Steps This Week</div><div class="steps-history">`;
-  const stRef = new Date();
-  stRef.setDate(stRef.getDate() - stRef.getDay());
-  let hasSteps = false;
+  // Km history this week
+  h += `<div class="history-title">Kilometers This Week</div><div class="km-history">`;
+  const stRef = new Date(today); stRef.setDate(stRef.getDate() - stRef.getDay());
+  let hasKm = false, totalKm = 0;
   for (let i = 0; i < 7; i++) {
-    const sd = new Date(stRef); sd.setDate(stRef.getDate()+i);
-    if (sd > new Date()) continue;
-    const dk = sd.toISOString().slice(0,10);
-    const state = loadDay(dk);
-    const steps = state.steps || 0;
-    if (steps > 0) hasSteps = true;
-    const cls = steps >= 10000 ? 'steps-val' : 'steps-val low';
-    h += `<div class="steps-row"><span class="steps-day">${DAY_FULL[sd.getDay()]}</span><span class="${cls}">${steps > 0 ? steps.toLocaleString() : '—'}</span></div>`;
+    const sd = new Date(stRef); sd.setDate(stRef.getDate() + i);
+    if (sd > today) continue;
+    const state = loadDay(localDate(sd));
+    const km = state.km || 0;
+    if (km > 0) { hasKm = true; totalKm += km; }
+    h += `<div class="km-row"><span class="km-day">${DAY_FULL[sd.getDay()]}</span><span class="km-val${km >= 5 ? '' : ' low'}">${km > 0 ? km + ' km' : '—'}</span></div>`;
   }
-  if (!hasSteps) h += `<div class="empty-state">No steps logged yet this week</div>`;
+  if (hasKm) h += `<div class="km-row" style="border-top:2px solid var(--border);margin-top:4px;padding-top:8px"><span class="km-day">Total</span><span class="km-val">${totalKm.toFixed(1)} km</span></div>`;
+  if (!hasKm) h += `<div class="empty-state">No km logged yet this week</div>`;
   h += `</div>`;
 
-  // Clear all data
   h += `<div class="btn-row" style="margin-top:20px"><button class="action-btn danger" onclick="clearAll()">Clear all history</button></div>`;
-
   hv.innerHTML = h;
 }
 
@@ -448,8 +438,7 @@ function clearAll() {
 }
 
 // --- Init ---
-const now = new Date();
-document.getElementById('dateStr').textContent = now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'short'});
+document.getElementById('dateStr').textContent = new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'short'});
 renderNav();
 renderContent();
 </script>
